@@ -7,6 +7,7 @@ const hourRefs = document.querySelector('span[data-hours]');
 const minRefs = document.querySelector('span[data-minutes]');
 const secRefs = document.querySelector('span[data-seconds]');
 const btnCDRef = document.querySelector('button[data-start]');
+const inputRef = document.querySelector('#datetime-picker');
 let timerId = null;
 
 btnCDRef.disabled = true;
@@ -36,12 +37,14 @@ function handleStartCD() {
   const setDate = fp.selectedDates[0].getTime();
 
   timerId = setInterval(() => {
+    inputRef.disabled = true;
     const currentDate = new Date().getTime();
     const deltaDate = setDate - currentDate;
     const formattedTime = convertMs(deltaDate);
     updateCountDown(formattedTime);
 
     if (deltaDate < 999) {
+      inputRef.disabled = false;
       clearInterval(timerId);
     }
   }, 1000);

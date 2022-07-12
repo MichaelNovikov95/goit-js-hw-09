@@ -24,9 +24,9 @@ const {
   elements: { delay, step, amount},
 } = e.currentTarget;
 
-delayValue = Number(delay.value);
-stepValue = Number(step.value);
-amountValue = Number(amount.value);
+let delayValue = Number(delay.value);
+let stepValue = Number(step.value);
+const amountValue = Number(amount.value);
 
 const onSuccess = ({ position, delay }) => Notiflix.Notify.success(`Fullfilled promise ${position} in ${delay} ms`);
 const onError = ({ position, delay }) => Notiflix.Notify.failure(`Rejected promise ${position} in ${delay} ms`);
